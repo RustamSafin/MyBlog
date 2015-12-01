@@ -1,0 +1,7 @@
+$('.like_comment').bind('ajax:success', function(){
+   $(this).closest('.like_comment').hide();
+   $(this).closest('.votes').html('= link_to like_comment_path(comment),remote: true, class:"upvote_comment", method: :get do 
+    
+      b Like
+      b = comment.get_likes.size %>');
+});

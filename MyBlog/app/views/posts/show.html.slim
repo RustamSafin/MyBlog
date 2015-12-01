@@ -1,0 +1,38 @@
+.row
+  .medium-12.columns
+
+    p#notice = notice
+
+    p
+      strong
+        | Title:
+      = @post.title
+
+    p
+      strong
+        | Body:
+      = @post.body
+    .button-group id="my_group_id"
+      = link_to 'New Post', new_post_path ,class: "tiny button"
+      = link_to 'Edit', edit_post_path(@post),class: "tiny button"
+      = link_to 'Back', posts_path,class: "tiny button"
+
+    .comments
+      - @comments.each do |comment|
+        = render comment
+    
+    = form_for(@post.comments.new, remote: true) do |f|
+      = f.hidden_field :post_id, :value => @post.id
+
+      .field
+        = f.label :nickname
+        br
+        = f.text_field :nickname
+
+      .field
+        = f.label :text
+        br
+        = f.text_area :text
+
+      .actions
+        = f.submit "Comment", class: "button"

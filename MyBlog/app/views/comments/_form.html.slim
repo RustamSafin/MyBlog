@@ -1,0 +1,22 @@
+.row
+  .medium-12.columns
+    = form_for(@comment) do |f|
+      -if @comment.errors.any?
+        h2 = pluralize(@comment.errors.count, "error")
+        ul
+          -@comment.errors.full_messages.each do |message|
+            li = message
+      .field
+        = f.label :nickname
+        br
+        = f.text_field :nickname
+      .field
+        = f.label :text
+        br
+        = f.text_area :text
+      .field
+        = f.label :date 
+        br
+        = f.date_select :date
+      .actions
+        = f.submit "Submit" class: "button"

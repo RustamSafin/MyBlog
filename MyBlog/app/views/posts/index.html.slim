@@ -1,0 +1,23 @@
+p#notice = notice
+.row
+  .medium-12.columns
+    h1 Listing Posts
+
+    table cellspacing="0"
+      thead 
+        tr
+          th Title
+          th Body
+          th Comments
+          th colspan="2"
+      tbody
+        -@posts.each do |post|
+          tr
+            td = link_to post.title,post
+            td = post.body
+            td = post.comments.count
+            td = link_to 'Edit', edit_post_path(post)
+            td = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+    br
+    .button-group id="my_group_id"
+      = link_to 'New Post', new_post_path,class: "tiny button"

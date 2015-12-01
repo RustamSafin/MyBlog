@@ -1,0 +1,19 @@
+.row
+  .medium-12.columns
+    p#notice = notice
+
+    p
+      strong Nickname:
+      = @comment.nickname
+
+    p
+      strong Text:
+      = @comment.text
+
+    p
+      strong Date:
+      = @comment.date
+
+    = link_to 'Edit', edit_comment_path(@comment) 
+    b |
+    = link_to 'Back', comments_path

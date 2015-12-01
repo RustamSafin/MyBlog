@@ -1,0 +1,4 @@
+$('.dislike_comment').bind('ajax:success', function(){
+   $(this).closest('.votes').html(' <%= link_to "Like", like_comment_path(@comment), remote: true, method: :get, class: 'upvote_comment' %>');
+
+});
